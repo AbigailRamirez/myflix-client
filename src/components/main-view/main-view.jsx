@@ -8,42 +8,37 @@ export const MainView = () => {
   const [movies, setMovies] = useState([
     {
       id: 1,
-      title: "Eloquent JavaScript",
+      title: "Spirited Away",
       image:
-        "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
-      director: "Marijn Haverbeke"
+        "https://upload.wikimedia.org/wikipedia/en/d/db/Spirited_Away_Japanese_poster.png",
+      director: "Hayao Miyazaki",
+      description: "During her family''s move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts."
     },
     {
       id: 2,
-      title: "Mastering JavaScript Functional Programming",
+      title: "Howl's Moving Castle",
       image:
-        "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-      director: "Federico Kereki"
+        "https://upload.wikimedia.org/wikipedia/en/a/a0/Howls-moving-castleposter.jpg?20200627065434",
+      director: "Hayao Miyazaki",
+      description: "The solitary life of an artificial man - who was incompletely constructed and has scissors for hands - is upended when he is taken in by a suburban family."
     },
     {
       id: 3,
-      title: "JavaScript: The Good Parts",
+      title: "Charlie and the Chocolate Factory",
       image:
-        "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
-      director: "Douglas Crockford"
-    },
-    {
-      id: 4,
-      title: "JavaScript: The Definitive Guide",
-      image:
-        "https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-      director: "David Flanagan"
-    },
-    {
-      id: 5,
-      title: "The Road to React",
-      image:
-        "https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg",
-      director: "Robin Wieruch"
+        "https://upload.wikimedia.org/wikipedia/en/1/17/Charlie_and_the_Chocolate_Factory_%28film%29.png",
+      director: "Tim Burton",
+      description: "A young boy wins a tour through the most magnificent chocolate factory in the world, led by the world''s most unusual candy maker."
     }
   ]);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  if (selectedMovie) {
+    return (
+      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+    );
+  }
 
   if (movies.length === 0) {
     return <div>The list is empty!</div>;
