@@ -28281,7 +28281,7 @@ MovieView.propTypes = {
         director: (0, _propTypesDefault.default).string,
         description: (0, _propTypesDefault.default).string
     }).isRequired,
-    onMovieClick: (0, _propTypesDefault.default).func.isRequired
+    onBackClick: (0, _propTypesDefault.default).func.isRequired
 };
 var _c;
 $RefreshReg$(_c, "MovieView");
