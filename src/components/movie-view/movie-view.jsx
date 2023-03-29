@@ -1,5 +1,6 @@
 export const MovieView = ({ movie, onBackClick }) => {
     return (
+      //Need to update with actors and genre
       <div>
         <div>
           <img src={movie.image} />

@@ -13,7 +13,17 @@ export const MainView = () => {
         fetch("https://filmeo-app.herokuapp.com/movies")
         .then((response) => response.json())
         .then((data) => {
-            console.log("movies from api:", data);
+            const moviesFromApi = data.map((movie) => {
+                //will update eventually with actors and genre
+                return {
+                    id: movie._id,
+                    title: movie.Title,
+                    image: movie.ImagePath,
+                    director: movie.Director?.Name,
+                    description: movie.Description
+                };
+            });
+            setMovies(moviesFromApi);
         });
     }, []);
 
