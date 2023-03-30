@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
 
 
 
 export const MainView = () => {
+<<<<<<< Updated upstream
   const [movies, setMovies] = useState([
     {
       id: 1,
@@ -29,6 +31,38 @@ export const MainView = () => {
         "https://upload.wikimedia.org/wikipedia/en/1/17/Charlie_and_the_Chocolate_Factory_%28film%29.png",
       director: "Tim Burton",
       description: "A young boy wins a tour through the most magnificent chocolate factory in the world, led by the world''s most unusual candy maker."
+=======
+    const [movies, setMovies] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState(null);
+    const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+        fetch("https://filmeo-app.herokuapp.com/movies")
+        .then((response) => response.json())
+        .then((data) => {
+            const moviesFromApi = data.map((movie) => {
+                //will update eventually with actors and genre
+                return {
+                    id: movie._id,
+                    title: movie.Title,
+                    image: movie.ImagePath,
+                    director: movie.Director?.Name,
+                    description: movie.Description
+                };
+            });
+            setMovies(moviesFromApi);
+        });
+    }, []);
+
+    if (!user) {
+        return <LoginView onLoggedIn={(user) => setUser(user)} />;
+    }
+
+    if (selectedMovie) {
+        return (
+            <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+        );
+>>>>>>> Stashed changes
     }
   ]);
 
