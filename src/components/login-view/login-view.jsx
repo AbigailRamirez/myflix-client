@@ -15,6 +15,9 @@ export const LoginView = ({ onLoggedIn }) => {
 
         fetch("https://filmeo-app.herokuapp.com/login", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(data)
         }).then((response) => {
             if (response.ok) {
