@@ -30,5 +30,5 @@ export const MovieView = ({ movie, onBackClick }) => {
       image: PropTypes.string.isRequired,
       director: PropTypes.string
   }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+    onBackClick: PropTypes.func.isRequired
   };
