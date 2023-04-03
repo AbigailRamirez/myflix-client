@@ -20,15 +20,12 @@ export const MainView = () => {
         if (!token) {
         return;
         }
-        // set loading before sending API request
-        //setLoading(true);
+        
         fetch("https://filmeo-app.herokuapp.com/movies", {
             headers: {Authorization: `Bearer ${token}`}
         })
         .then((response) => response.json())
         .then((data) => {
-        // stops loading after response received
-            //setLoading(false);
             console.log('data', data);
         const moviesFromApi = data.map((movie) => {
             return {
