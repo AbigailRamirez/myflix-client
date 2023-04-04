@@ -7,10 +7,11 @@ import "./index.scss";
 
 const App = () => {
     return (
-        <Container>
+        //temp styling
+        <Container style={{border: "1px solid red"}}>
             <MainView />
         </Container>
-      );
+    );
 };
 
 const container = document.querySelector("#root");
