@@ -1,5 +1,8 @@
-$color: steelblue;
+$primary: plum;
+$body-bg: lavender;
 
-.my-flix {
-  color: $color;
+@import '~bootstrap/scss/bootstrap.scss';
+
+.back-button {
+  background-color: plum;
 }
