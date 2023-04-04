@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 
 
@@ -47,25 +48,41 @@ export const MainView = () => {
         <Row>
             {!user ? (
                 <>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                    <LoginView onLoggedIn={(user, token) => {setUser(user); setToken(token);}} />
                     or
                     <SignupView />
                 </>
             ) : selectedMovie ? (
+                <>
+                <Button
+                    onClick={() => {
+                        setUser(null); setToken(null); localStorage.clear()
+                    }}
+                >
+                    Logout  
+                </Button>
                 <MovieView
                     movie={selectedMovie}
                     onBackClick={() => setSelectedMovie(null)}
                 />
+                </>
             ) : movies.length === 0 ? (
                 <div>The List is empty!</div>
             ) : (
                 <>
+                    <Button
+                        onClick={() => {
+                            setUser(null); setToken(null); localStorage.clear()
+                        }}
+                    >
+                        Logout
+                    </Button>
                     {movies.map((movie) => (
                         <MovieCard
                             key={movie.id}
                             movie={movie}
                             onMovieClick={(newSelectedMovie) => {
-                                setSelectedMovie(newSlectedMovie);
+                                setSelectedMovie(newSelectedMovie);
                             }}
                         />
                     ))}
