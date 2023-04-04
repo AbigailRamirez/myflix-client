@@ -60,7 +60,7 @@ export const MainView = () => {
         <>
             <button
                 onClick={() => {
-                setUser(null);
+                setUser(null); setToken(null); localStorage.clear()
                 }}
             >
             Logout
@@ -79,7 +79,7 @@ export const MainView = () => {
   
     return (
         <div>
-            <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
+            <button onClick={() => { setUser(null); setToken(null); localStorage.clear()}}>Logout</button>
 
             {movies.map((movie) => (
                 <MovieCard
