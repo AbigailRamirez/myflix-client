@@ -1,4 +1,6 @@
 import{ useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export const SignupView = () => {
     const [username, setUsername] = useState("");
@@ -33,7 +35,51 @@ export const SignupView = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="signupUsername">
+                <Form.Label>Username:</Form.Label>
+                <Form.Control
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    minLength="3"
+                />
+            </Form.Group>
+            <Form.Group controlId="signupPassword">
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+            </Form.Group>
+            <Form.Group controlId="signupEmail">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </Form.Group>
+            <Form.Group controlId="signupBirthday">
+                <Form.Label>Birthday:</Form.Label>
+                <Form.Control
+                    type="date"
+                    value={birthday}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </Form.Group>
+            <Button variant="primary" type="submit"> 
+                Submit
+            </Button>
+
+        </Form>
+        
+        /*<form onSubmit={handleSubmit}>
             <label>
                 Username:
             <input
@@ -72,6 +118,6 @@ export const SignupView = () => {
             />
             </label>
             <button type="submit">Submit</button>
-        </form>
+        </form>*/
     );
 };
