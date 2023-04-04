@@ -6,7 +6,7 @@ import "./index.scss";
 const App = () => {
     return (
         
-        <Container >
+        <Container>
             <MainView />
         </Container>
     );

@@ -1,34 +1,44 @@
 import "./movie-view.scss";
 import PropTypes from "prop-types";
-import Col from 'react-bootstrap/Col';
+import { Button, Card, Row, Col } from 'react-bootstrap';
+
 
 export const MovieView = ({ movie, onBackClick }) => {
-    return (
-      <div>
-        <div>
-          <img src={movie.image} />
-        </div>
-        <div>
-          <span>Title: </span>
-          <span>{movie.title}</span>
-        </div>
-        <div>
-          <span>Director: </span>
-          <span>{movie.director}</span>
-        </div>
-        <div>
-          <span>Description: </span>
-          <span>{movie.description}</span>
-        </div>
-        <button 
-          onClick={onBackClick} 
-          className="back-button"
-          style={{ cursor: "pointer" }}
-        >
-        Back
-        </button>
-      </div>
-    );
+  return (
+    <Row>
+        <Col>
+          <div className="movie-view">
+            <div className="movie-poster">
+              <img src={movie.image} />
+            </div>
+            <div className="movie-title">
+              <span className="label">Title: </span>
+              <span className="value">{movie.title}</span>
+            </div>
+            <div className="movie-description">
+              <span className="label">Description: </span>
+              <span className="value">{movie.description}</span>
+            </div>
+            <div className="movie-director">
+                  <span className="label">Director: </span>
+                  <span className="value">{movie.director}</span>
+                </div>
+                <div className="movie-genre">
+                  <span className="label">Genre: </span>
+                  <span className="value">{movie.genre}</span>
+            </div>
+            <Button 
+                onClick={onBackClick} 
+                className="back-button"
+                style={{ cursor: "pointer" }}
+                variant='secondary'
+                size='md'
+            >Back
+            </Button>
+          </div>
+      </Col>
+    </Row>
+  );
 };
 
 

@@ -50,15 +50,16 @@ export const MainView = () => {
             {!user ? (
                 <Col md={5}>
                     <LoginView onLoggedIn={(user, token) => {setUser(user); setToken(token);}} />
-                    or
+                    <div className="text-center"> or </div>
                     <SignupView />
                 </Col>
             ) : selectedMovie ? (
-                <Col md={8} style={{ border: "1px solid black" }}>
+                <Col md={8} >
                     <Button
                         onClick={() => {
                             setUser(null); setToken(null); localStorage.clear()
                         }}
+                        className='mb-3'
                     >
                         Logout  
                     </Button>
@@ -71,14 +72,19 @@ export const MainView = () => {
                 <div>The List is empty!</div>
             ) : (
                 <>
-                    <Button
-                        onClick={() => {
-                            setUser(null); setToken(null); localStorage.clear()
-                        }}
-                    >
-                        Logout
-                    </Button>
-
+                    <Row>
+                        <Col>
+                            <Button
+                                onClick={() => {
+                                setUser(null); setToken(null); localStorage.clear()
+                                }}
+                                className='mb-3'
+                            >
+                            Logout
+                            </Button>
+                        </Col>
+                    </Row>
+                
                     {movies.map((movie) => (
                         <Col className="mb-5" key={movie.id} md={3}>
                         <MovieCard

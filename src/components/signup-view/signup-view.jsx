@@ -1,6 +1,10 @@
 import{ useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Card, Col } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import CardGroup from 'react-bootstrap/CardGroup';
 
 export const SignupView = () => {
     const [username, setUsername] = useState("");
@@ -35,48 +39,63 @@ export const SignupView = () => {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="signupUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                    minLength="3"
-                />
-            </Form.Group>
-            <Form.Group controlId="signupPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Form.Group controlId="signupEmail">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Form.Group controlId="signupBirthday">
-                <Form.Label>Birthday:</Form.Label>
-                <Form.Control
-                    type="date"
-                    value={birthday}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Button variant="primary" type="submit"> 
-                Submit
-            </Button>
-
-        </Form>
+        <Container>
+            <Row>
+                <Col>
+                    <CardGroup>
+                        <Card>
+                            <Card.Body>
+                                <Form onSubmit={handleSubmit}>
+                                    <Form.Group controlId="signupUsername">
+                                        <Form.Label>Username:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            value={username}
+                                            onChange={(e) => setUsername(e.target.value)}
+                                            required
+                                            minLength="3"
+                                        />
+                                    </Form.Group>
+                                    <Form.Group controlId="signupPassword">
+                                        <Form.Label>Password:</Form.Label>
+                                        <Form.Control
+                                            type="password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            required
+                                        />
+                                    </Form.Group>
+                                    <Form.Group controlId="signupEmail">
+                                        <Form.Label>Email:</Form.Label>
+                                        <Form.Control
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            required
+                                        />
+                                    </Form.Group>
+                                    <Form.Group controlId="signupBirthday">
+                                        <Form.Label>Birthday:</Form.Label>
+                                        <Form.Control
+                                            type="date"
+                                            value={birthday}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            required
+                                        />
+                                    </Form.Group>
+                                    <Row>
+                                        <Col className='text-end'>
+                                            <Button variant="primary" type="submit" className='mt-3'> 
+                                                Submit
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </Form>
+                            </Card.Body>
+                        </Card>
+                    </CardGroup>
+                </Col>
+            </Row>
+        </Container>
     );
 };
