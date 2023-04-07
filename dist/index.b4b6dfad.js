@@ -27395,15 +27395,14 @@ const MovieCard = ({ movie  })=>{
         lineNumber: 9,
         columnNumber: 7
     }, undefined);
-};
-_c = MovieCard;
-MovieCard.propTypes = {
-    movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string.isRequired,
-        image: (0, _propTypesDefault.default).string.isRequired,
-        director: (0, _propTypesDefault.default).string
+}; /*MovieCard.propTypes = {
+    movie: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      director: PropTypes.string
     }).isRequired
-};
+  };*/ 
+_c = MovieCard;
 var _c;
 $RefreshReg$(_c, "MovieCard");
 
@@ -46433,7 +46432,7 @@ var _movieViewScss = require("./movie-view.scss");
 var _movieCard = require("../movie-card/movie-card");
 var _react = require("react");
 var _s = $RefreshSig$();
-const MovieView = ({ movies , user , token  })=>{
+const MovieView = ({ movies  })=>{
     _s();
     const { movieId  } = (0, _reactRouter.useParams)();
     const movie = movies.find((m)=>m._id === movieId);
@@ -46593,20 +46592,19 @@ const MovieView = ({ movies , user , token  })=>{
         lineNumber: 17,
         columnNumber: 5
     }, undefined);
-};
+}; /*MovieView.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    director: PropTypes.string
+}).isRequired
+};*/ 
 _s(MovieView, "AjmArUCrNUeq+QpzJGZ7+fsYwLA=", false, function() {
     return [
         (0, _reactRouter.useParams)
     ];
 });
 _c = MovieView;
-MovieView.propTypes = {
-    movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string.isRequired,
-        image: (0, _propTypesDefault.default).string.isRequired,
-        director: (0, _propTypesDefault.default).string
-    }).isRequired
-};
 var _c;
 $RefreshReg$(_c, "MovieView");
 

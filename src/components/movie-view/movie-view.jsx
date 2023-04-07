@@ -9,9 +9,9 @@ import {useEffect, useState} from "react";
 
 
 
-export const MovieView = ({ movies, user, token }) => {
+export const MovieView = ({ movies }) => {
   const {movieId} = useParams();
-  const movie = movies.find(m => m._id === movieId);
+  const movie = movies.find((m) => m._id === movieId);
 
   return (
     <Row>
@@ -53,10 +53,10 @@ export const MovieView = ({ movies, user, token }) => {
 };
 
 
-MovieView.propTypes = {
+/*MovieView.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     director: PropTypes.string
 }).isRequired
-};
+};*/
