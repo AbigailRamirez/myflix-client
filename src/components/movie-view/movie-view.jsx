@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Button, Card, Row, Col } from 'react-bootstrap';
-import {userParams} from "react-router";
+import {useParams} from "react-router";
 import {Link} from "react-router-dom";
 
 import "./movie-view.scss";
@@ -10,7 +10,7 @@ import {useEffect, useState} from "react";
 
 
 export const MovieView = ({ movies, user, token }) => {
-  const {movieId} = userParams();
+  const {movieId} = useParams();
   const movie = movies.find(m => m.id === movieId);
 
   return (

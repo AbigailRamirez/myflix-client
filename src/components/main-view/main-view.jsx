@@ -22,7 +22,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState(null);
+    //const [selectedMovie, setSelectedMovie] = useState(null);
 
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
@@ -52,7 +52,8 @@ export const MainView = () => {
             }
         });
         setMovies(moviesFromApi);
-        })
+        localStorage.setItem("movies", JSON.stringify(moviesFromApi))
+        });
     }, [token]);
 
     return(
@@ -103,7 +104,7 @@ export const MainView = () => {
 
                     <Route
                         path="/movies/:movieId"
-                        elent={
+                        element={
                             <>
                                 {!user ? (
                                     <Navigate to="/login" replace />
