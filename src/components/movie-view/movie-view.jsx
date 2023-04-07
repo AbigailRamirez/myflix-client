@@ -11,7 +11,7 @@ import {useEffect, useState} from "react";
 
 export const MovieView = ({ movies, user, token }) => {
   const {movieId} = useParams();
-  const movie = movies.find(m => m.id === movieId);
+  const movie = movies.find(m => m._id === movieId);
 
   return (
     <Row>
