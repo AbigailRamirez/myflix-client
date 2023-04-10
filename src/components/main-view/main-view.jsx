@@ -29,6 +29,12 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [token, setToken] = useState(storedToken? storedToken : null);
   
+
+    const updateUser = user => {
+        setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
+    }
+    
     useEffect(() => {
         if (!token) {
         return;
@@ -101,7 +107,20 @@ export const MainView = () => {
                             </>
                         }
                     />
-
+                    <Route
+                        path="/profile"
+                        element={
+                            !user ? (
+                                <Navigate to="/login" replace />
+                            ) : (
+                                <ProfileView user={user} token={token} movies={movies} onLoggedOut={() => {
+                                    setUser(null);
+                                    setToken(null);
+                                    localStorage.clear();
+                                    }} updateUser={updateUser}/>
+                                )
+                        }
+                    />
                     <Route
                         path="/movies/:movieId"
                         element={
