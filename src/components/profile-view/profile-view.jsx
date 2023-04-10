@@ -99,7 +99,9 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                     value={username}
                                     onChange={e => setUsername(e.target.value)}
                                     minLength="5"
+                                    required
                                     className="bg-light"
+                                    placeholder='Update username or Confirm Current'
                                 />
                             </Form.Group>
                             <Form.Group>
@@ -108,8 +110,10 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                     type="password"
                                     value={password}
                                     onChange={e => setPassword(e.target.value)}
+                                    required
                                     minLength="8"
                                     className="bg-light"
+                                    placeholder='Update Password or Confirm Current'
                                 />
                             </Form.Group>
                             <Form.Group>
@@ -118,8 +122,9 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                     type="email"
                                     value={email}
                                     onChange={e => setEmail(e.target.value)}
-                                    
+                                    required
                                     className="bg-light"
+                                    placeholder='Update Email or Confirm Current'
                                 />
                             </Form.Group>
                             <Form.Group>
@@ -128,6 +133,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                     type="date"
                                     value={birthday}
                                     onChange={e => setBirthday(e.target.value)}
+                                    required
                                     className="bg-light"
                                 />
                             </Form.Group>
