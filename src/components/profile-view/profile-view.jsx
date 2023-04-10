@@ -98,7 +98,6 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                     type="text"
                                     value={username}
                                     onChange={e => setUsername(e.target.value)}
-                                    required
                                     minLength="5"
                                     className="bg-light"
                                 />
@@ -109,7 +108,6 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                     type="password"
                                     value={password}
                                     onChange={e => setPassword(e.target.value)}
-                                    required
                                     minLength="8"
                                     className="bg-light"
                                 />
@@ -120,7 +118,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                     type="email"
                                     value={email}
                                     onChange={e => setEmail(e.target.value)}
-                                    required
+                                    
                                     className="bg-light"
                                 />
                             </Form.Group>
@@ -130,7 +128,6 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                     type="date"
                                     value={birthday}
                                     onChange={e => setBirthday(e.target.value)}
-                                    required
                                     className="bg-light"
                                 />
                             </Form.Group>
