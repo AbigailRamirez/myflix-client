@@ -7,6 +7,7 @@ import "./profile-view.scss";
 
 export const ProfileView = ({ user, movies }) => {
 
+
     const storedToken = localStorage.getItem("token");
     const storedMovies = JSON.parse(localStorage.getItem("movies"))
     const storedUser = localStorage.getItem("user");
@@ -22,6 +23,7 @@ export const ProfileView = ({ user, movies }) => {
 
     const [allMovies] = useState(storedMovies ? storedMovies: movies);
     const [filteredMovies, setFilteredMovies] = useState([]);
+
 
     // Show updated user on the profile
     const getUser = (token) => {
@@ -39,7 +41,7 @@ export const ProfileView = ({ user, movies }) => {
         })
     }
     console.log("userFavMov", favoriteMovies)
-  
+
     useEffect(()=> {
         getUser(token);
     },[])
@@ -53,9 +55,9 @@ export const ProfileView = ({ user, movies }) => {
                     <Card.Body>
                     <div>
                         <h4>User Details</h4>
-                        <p>Username: {username}</p>
-                        <p>Birthday: {birthday}</p>
-                        <p>Email: {email}</p>
+                        <p>Username: {user.Username}</p>
+                        <p>Birthday: {user.Birthday.slice(0,10)}</p>
+                        <p>Email: {user.Email}</p>
                     </div> 
                     </Card.Body>
                 </Card>
@@ -69,7 +71,11 @@ export const ProfileView = ({ user, movies }) => {
             </Col>
         </Row>
         <Row>
-            <FavMovies user={user} movies={movies}/>
+            <FavMovies 
+                user={user} 
+                movies={movies}
+                key={movies.id}
+            />
         </Row>
     </Container>
     );

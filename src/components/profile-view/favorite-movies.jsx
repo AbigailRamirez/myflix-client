@@ -21,37 +21,37 @@ export const FavMovies = ({user, movies}) => {
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     // Show updated user on the profile
-const getUser = (token) => {
-    fetch(`https://filmeo-app.herokuapp.com/users/${user.Username}`,{
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}`},
-    }).then(response => response.json())
-    .then((response) => {
-      console.log("getUser response", response)
-      setUsername(response.Username);
-      setEmail(response.Email);
-      setPassword(response.Password);
-      setBirthday(response.Birthday);
-      setFavoriteMovies(response.FavoriteMovies)
-    })
-  }
-  console.log("userFavMov", favoriteMovies)
+    const getUser = (token) => {
+        fetch(`https://filmeo-app.herokuapp.com/users/${user.Username}`,{
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}`}
+        }).then(response => response.json())
+        .then((response) => {
+            console.log("getUser response", response)
+            setUsername(response.Username);
+            setEmail(response.Email);
+            setPassword(response.Password);
+            setBirthday(response.Birthday);
+            setFavoriteMovies(response.FavoriteMovies)
+        })
+    }
+    console.log("userFavMov", favoriteMovies)
 
-  const favMovies = movies.filter((movie) => favoriteMovies.includes(movie.id));
+    const favMovies = movies.filter((movie) => favoriteMovies.includes(movie.id));
 
-  console.log("favMovies", favMovies)
+    console.log("favMovies", favMovies)
 
     //Filter favorite movies for later display
-useEffect (() => {
-    const newList = allMovies.filter((movie)=> {
-        const hasMovieId = favoriteMovies.some((m)=> movie.id === m);
-        if (hasMovieId) {
-            return movie
-        }
-    })
-    setFavoriteMovies (newList)
-    getUser(token);
-  }, [])
+    useEffect (() => {
+        const newList = allMovies.filter((movie)=> {
+            const hasMovieId = favoriteMovies.some((m)=> movie.id === m);
+            if (hasMovieId) {
+                return movie
+            }
+        })
+        setFavoriteMovies (newList)
+        getUser(token);
+    }, [])
 
     return (
         <>
