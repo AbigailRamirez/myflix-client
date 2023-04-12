@@ -47645,7 +47645,7 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu","./favorite-movies":"dTTQH","./update-user":"2SBwg","./profile-view.scss":"eyKYH","@parcel/transformer-js/src/esmodule-helpers.js":"bU6JN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1LQzg"}],"dTTQH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu","./profile-view.scss":"eyKYH","@parcel/transformer-js/src/esmodule-helpers.js":"bU6JN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1LQzg","./favorite-movies":"dTTQH","./update-user":"2SBwg"}],"eyKYH":[function() {},{}],"dTTQH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8767 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -47958,6 +47958,6 @@ $RefreshReg$(_c, "UpdateForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"bU6JN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1LQzg"}],"eyKYH":[function() {},{}],"lJZlQ":[function() {},{}]},["2CMFX","2m3Ob","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"bU6JN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1LQzg"}],"lJZlQ":[function() {},{}]},["2CMFX","2m3Ob","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
