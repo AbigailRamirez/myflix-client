@@ -4,7 +4,6 @@ import { Button, Card, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
-
   return (
     <React.Fragment>
       <Card
