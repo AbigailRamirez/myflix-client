@@ -1,20 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card, Badge } from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, isFavorite, toggleFavorite }) => {
+export const MovieCard = ({ movie }) => {
 
-  const handleFavoriteClick = (event) => {
-    event.preventDefault();
-    toggleFavorite(movie);
-  };
-  
   return (
-    <>
+    <React.Fragment>
       <Card
         style={{ width: "20rem" }}
-        className="m-2 shadow-sm p-3 rounded-0 text-ligth"
+        className="m-2 shadow-sm p-3 rounded-0 text-dark"
       >
         <Card.Img
           variant="top"
@@ -31,39 +26,6 @@ export const MovieCard = ({ movie, isFavorite, toggleFavorite }) => {
           >
             {movie.genre}
           </Badge>
-          <Button
-            variant="link"
-            className="text-light"
-            onClick={handleFavoriteClick}
-          >
-            {isFavorite ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                fill="currentColor"
-                className="bi bi-heart-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                fill="currentColor"
-                className="bi bi-heart"
-                viewBox="0 0 16 16"
-                color="primary"
-              >
-                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg>
-            )}
-          </Button>
         </Card.ImgOverlay>
         <Card.Body className="d-flex flex-column ">
           <Card.Title>
@@ -98,21 +60,19 @@ export const MovieCard = ({ movie, isFavorite, toggleFavorite }) => {
           </Card.Text>
           <div className="text-center mt-auto">
             <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
-              <Button variant="primary">View Details</Button>
+              <Button variant="primary">SEE DETAILS</Button>
             </Link>
           </div>{" "}
         </Card.Body>
       </Card>
-    </>
+    </React.Fragment>
   );
-
 };
 
-  /*MovieCard.propTypes = {
+/*MovieCard.propTypes = {
     movie: PropTypes.shape({
       title: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired,
       director: PropTypes.string
     }).isRequired
   };*/
-

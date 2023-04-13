@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Row, Button, Col } from "react-bootstrap";
+import { Row, Button, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router"
 import { MovieCard } from "../movie-card/movie-card";
@@ -8,84 +8,68 @@ import { useEffect, useState } from "react";
 
 
 
-export const MovieView = ({ movies, user, favoriteMovies }) => {
+export const MovieView = ({ movies, user, token, updateUser }) => {
   const { movieId } = useParams();
-  const storedToken = localStorage.getItem("token");
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const movie = movies.find((m) => m.id === movieId);
+  const movie = movies.find(m => m.id === movieId);
 
-  const [movieExists, setMovieExists] = useState(false);
-  const [disableRemove, setDisableRemove] = useState(true)
-  const [userFavoriteMovies, setUserFavoriteMovies] = useState(storedUser.FavoriteMovies ? storedUser.FavoriteMovies: favoriteMovies);
+  const [isFavorite, setIsFavorite] = useState(user.FavoriteMovies.includes(movie.id));
 
-  console.log(user)
+  useEffect(() => {
+    setIsFavorite(user.FavoriteMovies.includes(movie.id));
+    window.scrollTo(0, 0);
+}, [movieId])
 
-  // AddFavMovie
-  const addFavoriteMovie = async() => {
-    const favoriteMovie = await fetch(`https://filmeo-app.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-      {
-        method: "POST",
-        headers: { 
-          Authorization: `Bearer ${storedToken}`,
-          "Content-Type": "application/json", 
-        }
-      })
-
-      console.log(storedToken)
-
-    const response = await favoriteMovie.json()
-      setUserFavoriteMovies(response.FavoriteMovies)
-      if (response) {
-        alert("Movie added to favorites");
-        localStorage.setItem("user", JSON.stringify (response))
-        window.location.reload(); 
+const addFavorite = () => {
+  fetch(`https://filmeo-app.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` }
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.json();
       } else {
-        alert("Something went wrong");
-      }    
-  }
+          alert("Failed");
+          return false;
+      }
+  })
+  .then(user => {
+      if (user) {
+          alert("Successfully added to favorites");
+          setIsFavorite(true);
+          updateUser(user);
+      }
+  })
+  .catch(e => {
+      alert(e);
+  });
+}
 
-  const removeFavoriteMovie = async() => {
-    const favoriteMovie = await fetch (`https://filmeo-app.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-    {
+const removeFavorite = () => {
+  fetch(`https://filmeo-app.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
       method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${storedToken}`,
-        "Content-Type": "application/json"
-      }
-    })     
-    const response = await favoriteMovie.json()
-      console.log(response)
-      if (response) {
-        alert("Movie removed from favorites");
-        localStorage.setItem("user", JSON.stringify (response))
-        window.location.reload(); 
+      headers: { Authorization: `Bearer ${token}` }
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.json();
       } else {
-        alert("Something went wrong");
+          alert("Failed");
+          return false;
       }
-  };
-
-  const movieAdded = () => {
-    const hasMovie = userFavoriteMovies.some((m) => m === movieId)
-      console.log("userFavMov", userFavoriteMovies)
-      console.log("movieId", movieId)
-      if (hasMovie) {
-        setMovieExists(true)
+  })
+  .then(user => {
+      if (user) {
+          alert("Successfully deleted from favorites");
+          setIsFavorite(false);
+          updateUser(user);
       }
-  };
+  })
+  .catch(e => {
+      alert(e);
+  });
+}
 
-  const movieRemoved = () => {
-    const hasMovie = userFavoriteMovies.some((m) => m === movieId)
-      if (hasMovie) {
-        setDisableRemove(false)
-      }
-  };
-
-  console.log("movieExists", movieExists)
-
-  useEffect (()=> {
-    movieAdded()
-    movieRemoved()
-  },[])
+  
 
   return (
     <Row>
@@ -112,7 +96,6 @@ export const MovieView = ({ movies, user, favoriteMovies }) => {
             </div>
             <Link to={`/`}>
             <Button 
-                //onClick={onBackClick} 
                 className="back-button"
                 style={{ cursor: "pointer" }}
                 variant='primary'
@@ -120,24 +103,11 @@ export const MovieView = ({ movies, user, favoriteMovies }) => {
             >Back
             </Button>
             </Link>
-            <br />
-            <br />
-            <Button 
-              className="button-add-favorite"
-              onClick={addFavoriteMovie}
-              disabled={movieExists}
-            >
-            + Add to Favorites
-            </Button>
-            <br/>
-            <br/>
-            <Button 
-              variant="danger"
-              onClick={removeFavoriteMovie}
-              disabled={disableRemove}
-            >
-            Remove from Favorites
-            </Button> 
+            {isFavorite ? 
+              <Button variant="danger" className="back-button ms-2" onClick={removeFavorite}>Remove from favorites</Button>
+                : <Button className="back-button ms-2" onClick={addFavorite}>Add to favorites</Button>
+            } 
+           
           </div>
       </Col>
     </Row>
