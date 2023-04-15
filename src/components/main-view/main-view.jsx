@@ -162,8 +162,8 @@ export const MainView = () => {
                         <Col
                           className="mb-4"
                           key={movie.id}
-                          xl={2}
-                          lg={3}
+                          xl={3}
+                          lg={4}
                           md={4}
                           xs={6}
                         >
