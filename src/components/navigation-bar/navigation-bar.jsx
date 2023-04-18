@@ -1,11 +1,20 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
+
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    onSearch(query);
+  }, [query]);
+
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/" onClick={() => setQuery("")}>
           MyFlix App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,12 +32,32 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/" onClick={() => setQuery("")}>Home</Nav.Link>
                 <Nav.Link as={Link} to="/profile">Profile</Nav.Link> 
                 <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
               </>
             )}
           </Nav>
+          {user && (
+            <Form className="d-flex">
+                <Form.Control
+                    style={{color: "white"}}
+                    type="search"
+                    placeholder="Search"
+                    className="me-2"
+                    aria-label="Search"
+                    value={query}
+                    onChange={e => {
+                        setQuery(e.target.value);
+                    }}
+                />
+                <Link to={"/"}>
+                    <Button variant="primary" onClick={() => {
+                        onSearch(query);
+                    }}>Search</Button>
+                </Link>
+            </Form>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
