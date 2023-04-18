@@ -47056,7 +47056,7 @@ const NavigationBar = ({ user , onLoggedOut , onSearch  })=>{
                     as: (0, _reactRouterDom.Link),
                     to: "/",
                     onClick: ()=>setQuery(""),
-                    children: "MyFlix App"
+                    children: "Filmeo App"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
                     lineNumber: 17,

@@ -15,7 +15,7 @@ export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/" onClick={() => setQuery("")}>
-          MyFlix App
+          Filmeo App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
