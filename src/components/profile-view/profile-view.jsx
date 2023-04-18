@@ -165,7 +165,7 @@ export const ProfileView = ({
         <h3 className="mt-3 mb-3 text-dark">Your favorite movies:</h3>
       </Col>
       {favoriteMovies.map((movie) => (
-        <Col className="mb-4" key={movie.id} xl={2} lg={3} md={4} xs={6}>
+        <Col className="mb-4" key={movie.id} xl={3} lg={3} md={4} xs={6}>
           <MovieCard movie={movie} />
         </Col>
       ))}
