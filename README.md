@@ -1,6 +1,9 @@
 # MyFlix App Frontend
 ![Screenshot of homepage once logged into MyFlix app. Shows list of movies being pulled from API](/assets/myflix.png)
 
+## Objective
+The objective of this project was to build the client-side of the myFlix app using React, based on its existing server-side code (REST API and database). The goal was to create a seamless user experience by combining server-side and client-side development and in conjuction with the other half of the project as previously mentioned specifically utilizes the MERN (MongoDB, Express, React, and Node.js) stack.
+
 This is a single page frontend React application for the [movie-api backend](https://github.com/AbigailRamirez/myflix-api).
 
 This application allows users to:
@@ -21,5 +24,5 @@ This application allows users to:
 - CSS/SCSS
 
 ### Link to live hosted site
-Here's the link to the hosted version of my application: [Filmeo App](https://filmeo-app.netlify.app/)
+Here's the link to the hosted version of my application: [Filmeo App](https://filmeo-app.netlify.app/signup)
 
